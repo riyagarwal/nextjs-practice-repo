@@ -122,4 +122,19 @@ Note:-
 The caching behaviour is only implemented in the 'fetch' function.
 If you use Third-party libraries like Axios, you will not get a data cache.
 
+In Next.js rendering can happen on the client or on server.
+If it happens on the server, it can happen 
+1. at build time (which is called Static rendering)
+or
+2. at request time which is called Dynamic rendering.
+
+Static Rendering
+aka Static Site Generation (SSG)
+If the pages have static data, Next.JS renders them only once when we build our application for production.
+Next time those pages or components are needed, Next.JS does not re-render them.
+Instead, it fetches the content from the cache which is based on the file system.
+It means render at build time
+
+Dynamic Rendering
+This happens at request time.
 
