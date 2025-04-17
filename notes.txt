@@ -1,0 +1,92 @@
+Built on top of react.
+React is a library to build interactive UIs
+Next.js is a framework
+A framework = libraries + tools + conventions
+
+NextJS has its own:-
+compiler - to transform and minify JS code
+CLI - to build and start applications
+Node.js runtime - to execute JS code
+
+There are 2 ways we can run a JS code:-
+1. within the web browser on the client side
+
+or 
+
+2. within the Node.js runtime on the Server
+
+Node.js runtime is just a fancy name for a program that can execute JS code
+
+Because of Node.js runtime in Next.js, we can do:-
+1. Full-stack development
+We can write both the front-end and back-end code in the same project.
+The backend code gets executed within the Node.js runtime
+The frontend code gets bundled and sent to the client for execution within web browser
+
+2. This node.js runtime also allows us to render our components on the server and send their content to the client.
+This technique is called server-side rendering (SSR).
+SSR makes our application faster and more SEO friendly.
+
+3.
+ With Next.js we can pre-render certain pages and components that have static data when we build our application.
+We just render them once and serve them whenever they are needed.
+This technique is called static site generation (SSG).
+It makes our application super-fast.
+
+Next.js is a framework for building fast and search-engine friendly applications.
+
+Routing in Next.js is based on the file-system
+The file-based routing happens in app folder
+To make a folder inside `app` folder a route, we need to create a file called page.js(or tsx) inside that folder.
+The name of the file is important because it tells Next.js that this is a route and it should be treated as such.
+The routing system in NextJs is based on convention, not configuration.
+This is why in `page.tsx`, page should be in smallcase
+
+In Nextjs projects we have 2 environments where we can render our components and generate HTML markup:-
+1. Within client on the Web Browser - similar to how React components work
+It is referred to as Client-side Rendering (CSR)
+We have to bundle all our components and send them to the client for rendering.
+As our application grows, the bundle becomes larger.
+This means we need more memory on the client to load all these components.
+So this process is resource intensive.
+No SEO benefits because the search engine crawlers cannot see the content of the components.
+Any sensitive data we have in our components or the dependencies like the API keys will be exposed to the client.
+
+or
+
+2. Within server on the Node.js runtime
+Components are rendered on the server
+Only send the essential components to the client for rendering.
+So bundles are smaller
+Because the server handles most of the rendering, we need less resources on the client.
+Because rendering is done on the server and we send the actual content to the client, the search engine crawlers can see and index our pages.
+We can keep the sensitive data like API keys on the server and not expose them to the client.
+
+However, with SSR we lose the interactivity of the components.
+Server components (components that are rendered on the server) cannot:-
+listen to browser events like clicks, key presses, etc.
+They cannot access browser APIs like local storage, session storage, etc.
+They cannot use hooks like useState, useEffect, etc. 
+i.e. they cannot maintain state or use effects.
+
+These functionalities are only available to client components (components that are rendered on the client).
+So, in real world applications, we have a mix of server and client components.
+We should default to server components and only use client components when we need interactivity or browser APIs.
+
+There are 2 ways we can fetch data:-
+1. We can fetch it on the client
+For this, we typically use the state hook to declare a state variable
+And the effect hook to call the backend, get the data, and put it in the state variable
+
+2. We can fetch it on the server
+
+the fetch() function is defined in the browsers.
+And with this we can send http requests to the backend
+
+In Client-side Rendering, the browser initially gets a blank document, 
+then it will call the backend to fetch the data and then render the document.
+So, there is always an extra round-trip to the backend.
+So, whenever you want to fetch data, fetch in server components.
+
+
+
